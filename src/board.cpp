@@ -563,6 +563,8 @@ bool board::isHaveAvailableMoves() {
 }
 
 void board::resetBoard() {
-    initColorChips();
+    while (!isHaveAvailableMoves()) {
+        initColorChips();
+    }
     score = 0;
 }

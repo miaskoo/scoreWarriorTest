@@ -32,7 +32,7 @@ bool match3Scene::init() {
     
     match3Board = board::create(widthBoard, heightBoard, countColorBoard);
     spriteScene->addChild(match3Board);
-    //startBot();
+    startBot();
     
     labelScore = scoreWarrior::Label::create();
     cocos2d::TTFConfig ttfConfig("fonts/arial.ttf", 23, cocos2d::GlyphCollection::DYNAMIC);
@@ -47,6 +47,9 @@ bool match3Scene::init() {
 }
 
 void match3Scene::startBot() {
+    if (!enableBot) {
+        return;
+    }
     auto actionWait = cocos2d::DelayTime::create(0.1f);
     auto actionSequence = cocos2d::Sequence::create(match3Board->createBotFunc(), actionWait, nullptr);
     auto actionRepeat = cocos2d::RepeatForever::create(actionSequence);
@@ -54,6 +57,9 @@ void match3Scene::startBot() {
 }
 
 void match3Scene::stopBot() {
+    if (!enableBot) {
+        return;
+    }
     match3Board->stopAllActions();
 }
 
@@ -95,7 +101,7 @@ void match3Scene::hideUiEndGame() {
 
 void match3Scene::showUiEndGame() {
     endGameUi->setVisible(true);
-    auto player = DesktopVideoPlayer::create();
+    auto player = desktopVideoPlayer::create();
     player->setFileName("endgame.mp4");
     player->setContentSize(getContentSize());
     player->callback = [player, this](){
@@ -129,13 +135,12 @@ void match3Scene::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transfo
 void match3Scene::endGame() {
     state = stateGameScene::WAIT;
     showUiEndGame();
-    //stopBot();
+    stopBot();
+    match3Board->resetBoard();
 }
 
 void match3Scene::newGame() {
     hideUiEndGame();
     state = stateGameScene::GAME;
-    alredyCheckBoard = false;
-    match3Board->resetBoard();
-    //startBot();
+    startBot();
 }

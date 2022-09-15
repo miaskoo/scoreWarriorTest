@@ -41,7 +41,7 @@ AVPlayer *avPlayer;
 USING_NS_CC;
 
 
-DesktopVideoPlayer::~DesktopVideoPlayer()
+desktopVideoPlayer::~desktopVideoPlayer()
 {
     [avPlayer pause];
     [containerView removeFromSuperview];
@@ -49,9 +49,9 @@ DesktopVideoPlayer::~DesktopVideoPlayer()
   
 }
 
-DesktopVideoPlayer* DesktopVideoPlayer::create()
+desktopVideoPlayer* desktopVideoPlayer::create()
 {
-    DesktopVideoPlayer *node = new (std::nothrow)DesktopVideoPlayer();
+    desktopVideoPlayer *node = new (std::nothrow)desktopVideoPlayer();
     if(node && node->init())
     {
         node->autorelease();
@@ -63,7 +63,7 @@ DesktopVideoPlayer* DesktopVideoPlayer::create()
 }
 
 
-bool DesktopVideoPlayer::init()
+bool desktopVideoPlayer::init()
 {
 
     NSWindow* nsWindow = Director::getInstance()->getOpenGLView()->getCocoaWindow();
@@ -75,7 +75,7 @@ bool DesktopVideoPlayer::init()
     return true;
 }
 
-void DesktopVideoPlayer::setFileName(const std::string &videoPath)
+void desktopVideoPlayer::setFileName(const std::string &videoPath)
 {
     
     _fileName = videoPath;
@@ -99,7 +99,7 @@ void DesktopVideoPlayer::setFileName(const std::string &videoPath)
     
 }
 
-void DesktopVideoPlayer::playVideo()
+void desktopVideoPlayer::playVideo()
 {
     if(_fileName != "")
     {
@@ -107,7 +107,7 @@ void DesktopVideoPlayer::playVideo()
     }
 }
 
-void DesktopVideoPlayer::stopVideo()
+void desktopVideoPlayer::stopVideo()
 {
     if(_fileName != "")
     {
@@ -115,14 +115,14 @@ void DesktopVideoPlayer::stopVideo()
         [avPlayer pause];
     }
 }
-void DesktopVideoPlayer::pauseVideo()
+void desktopVideoPlayer::pauseVideo()
 {
     if(_fileName != "")
     {
         [avPlayer pause];
     }
 }
-void DesktopVideoPlayer::resumeVideo()
+void desktopVideoPlayer::resumeVideo()
 {
     if(_fileName != "")
     {
@@ -130,13 +130,13 @@ void DesktopVideoPlayer::resumeVideo()
     }
 }
 
-void DesktopVideoPlayer::seekTo(float sec)
+void desktopVideoPlayer::seekTo(float sec)
 {
     [avPlayer seekToTime:CMTimeMake(sec, 1)];
 
 }
 
-void DesktopVideoPlayer::setPlayerVisible(const bool show)
+void desktopVideoPlayer::setPlayerVisible(const bool show)
 {
     if(show){
         [containerView setHidden:NO];
@@ -148,7 +148,7 @@ void DesktopVideoPlayer::setPlayerVisible(const bool show)
     
 }
 
-void DesktopVideoPlayer::update(float)
+void desktopVideoPlayer::update(float)
 {
     if(_fileName != "")
     {
@@ -165,7 +165,7 @@ void DesktopVideoPlayer::update(float)
     
 }
 
-void DesktopVideoPlayer::RemoveSelf()
+void desktopVideoPlayer::RemoveSelf()
 {
     
 }

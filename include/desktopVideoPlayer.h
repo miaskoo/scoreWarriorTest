@@ -16,11 +16,11 @@
 /*
  */
 
-class DesktopVideoPlayer : public cocos2d::Node
+class desktopVideoPlayer : public cocos2d::Node
 {
     
 public:
-    static DesktopVideoPlayer* create();
+    static desktopVideoPlayer* create();
     
     void setFileName(const std::string &videoPath);
     void playVideo();
@@ -35,7 +35,7 @@ public:
 
 private:
     virtual bool init();
-    ~DesktopVideoPlayer();
+    ~desktopVideoPlayer();
     std::string _fileName;
     
     
