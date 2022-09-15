@@ -32,7 +32,7 @@ bool match3Scene::init() {
     
     match3Board = board::create(widthBoard, heightBoard, countColorBoard);
     spriteScene->addChild(match3Board);
-    startBot();
+    //startBot();
     
     labelScore = scoreWarrior::Label::create();
     cocos2d::TTFConfig ttfConfig("fonts/arial.ttf", 23, cocos2d::GlyphCollection::DYNAMIC);
@@ -129,7 +129,7 @@ void match3Scene::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transfo
 void match3Scene::endGame() {
     state = stateGameScene::WAIT;
     showUiEndGame();
-    stopBot();
+    //stopBot();
 }
 
 void match3Scene::newGame() {
@@ -137,5 +137,5 @@ void match3Scene::newGame() {
     state = stateGameScene::GAME;
     alredyCheckBoard = false;
     match3Board->resetBoard();
-    startBot();
+    //startBot();
 }
