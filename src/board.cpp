@@ -261,9 +261,7 @@ void board::updateBoard() {
             }
             if (isFalling) {
                 stable = false;
-                continue;
             }
-            currentChip->setClickable(true);
         }
     }
     
@@ -298,6 +296,13 @@ void board::updateBoard() {
         stable = chipsForMatching.empty();
     }
     if (stable) {
+        for (int w = 0; w < gridWidth; w++) {
+            for (int h = 0; h < gridHeight; h++) {
+                auto currentElement = getGridElementFromId(w, h);
+                auto currentChip = currentElement->getBindedChip();
+                currentChip->setClickable(true);
+            }
+        }
         unDirty();
     }
     if (needUpdateChipGreed) {
