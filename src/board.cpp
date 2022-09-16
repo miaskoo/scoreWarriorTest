@@ -424,7 +424,7 @@ void board::initGrids() {
     gridChips = grid::create(gridWidth, gridHeight);
     gridChips->setAnchorPoint(cocos2d::Vec2::ANCHOR_MIDDLE);
     gridChips->setSizeElements(cocos2d::Size(60, 60));
-    gridPlaces->scoreWarrior::Sprite::addChild(gridChips, 1);
+    addChild(gridChips);
 }
 
 void board::createChipsArray() {

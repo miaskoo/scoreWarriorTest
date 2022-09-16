@@ -34,8 +34,8 @@ private:
     
     bool alredyCheckBoard = false;
     
-    const size_t widthBoard = 4U;
-    const size_t heightBoard = 5U;
+    const size_t widthBoard = 10U;
+    const size_t heightBoard = 10U;
     const size_t countColorBoard = 6U;
     const bool enableBot = false;
 };
