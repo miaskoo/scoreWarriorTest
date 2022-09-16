@@ -17,6 +17,8 @@ public:
     virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event* /*unusedEvent*/) override;
     void setTouchEndCallback(std::function<void(chip*, moveDirectionChip)> aTouchEndCallback);
     void setClickable(bool value);
+    bool isStable();
+    void setStable(bool value);
     
     bool operator== (const chip& obj);
 protected:
@@ -27,6 +29,7 @@ private:
     cocos2d::Vec2 startPos = cocos2d::Vec2::ZERO;
     bool startClick = false;
     bool clickable = true;
+    bool stable = true;
     
     std::function<void(chip*, moveDirectionChip)> touchEndCallback = nullptr;
 };

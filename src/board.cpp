@@ -309,10 +309,11 @@ void board::addChipsForMatchingFromAutomatch() {
     for (int w = 0; w < gridWidth; w++) {
         for (int h = 0; h < gridHeight; h++) {
             auto currentChip = getGridElementFromId(w, h)->getBindedChip();
-            if (!currentChip) {
+            if (!currentChip || currentChip->isStable()) {
                 continue;
             }
             addChipsForMatching(currentChip);
+            currentChip->setStable(true);
         }
     }
 }
@@ -355,6 +356,7 @@ bool board::applyGravityForChip(chip *obj) {
         
         auto currentElement = getGridElementFromChip(obj);
         obj->setClickable(false);
+        obj->setStable(false);
         currentElement->unbindChip();
         gravityElement->bindChip(obj);
         obj->runAction(createActionMove(dirGravity));
@@ -411,7 +413,10 @@ bool board::init(size_t width, size_t height, size_t countColor) {
     initGrids();
     createChipsArray();
     initChips();
-    initColorChips();
+    do {
+        initColorChips();
+    }
+    while (!isHaveAvailableMoves());
     return true;
 }
 

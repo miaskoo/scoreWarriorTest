@@ -112,3 +112,11 @@ void chip::setClickable(bool value) {
 bool chip::operator== (const chip& obj) {
     return color == obj.getColorChip();
 }
+
+bool chip::isStable() {
+    return stable;
+}
+
+void chip::setStable(bool value) {
+    stable = value;
+}
