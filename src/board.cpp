@@ -344,6 +344,7 @@ void board::spawnFreeChip(size_t w, size_t h) {
             
             freeChip->setVisible(true);
             freeChip->setClickable(true);
+            freeChip->setStable(false);
         }
     }
 }
