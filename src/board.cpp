@@ -351,6 +351,9 @@ void board::spawnFreeChip(size_t w, size_t h) {
             freeChip->setClickable(true);
             freeChip->setStable(false);
         }
+        else {
+            assert(false && "no free chip");
+        }
     }
 }
 
@@ -470,10 +473,6 @@ void board::initChips() {
             element->bindChip(chipForBind);
             gridChips->addChild(chipForBind);
         }
-        auto freeChip = chip::create();
-        initDataForChip(freeChip);
-        gridChips->addChild(freeChip);
-        freeChips.push_back(freeChip);
     }
 }
 

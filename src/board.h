@@ -68,7 +68,7 @@ private:
     
     size_t gridWidth = 0U;
     size_t gridHeight = 0U;
-    placeForChip*** places;
+    placeForChip*** places = nullptr;
     
     const size_t minColor = 2U;
     const size_t maxColor = static_cast<size_t>(colorChip::SIZE);
